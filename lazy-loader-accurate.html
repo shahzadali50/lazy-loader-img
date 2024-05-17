@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <!-- Custom CSS-->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>lazy loader 2</title>
+
+  <style>
+    img {
+      /* border: 2px solid red; */
+      height: 1000px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <!-- main -->
+  <main>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-1.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-2.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-3.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-4.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-5.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-6.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-7.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-8.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-9.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-10.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-11.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-12.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-13.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-14.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-15.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-16.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-15.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-12.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-13.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-14.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-15.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-16.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-15.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-18.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-19.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-15.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-18.jpg" alt="not" />
+        </div>
+        <div class="col-6">
+          <img class="img-fluid my-4 lazy" src="assets/images/lazy-19.jpg" alt="not" />
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- footer -->
+  <footer></footer>
+  <!-- Bootstrap JS -->
+  <script src="assets/js/jquery-3.5.1.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const lazyLoadImages = () => {
+        const images = document.querySelectorAll(
+          'img.lazy:not([data-lazy="true"])'
+        ); // Target images with class 'lazy' that aren't already marked for lazy loading
+        images.forEach((img) => {
+          const originalSrc = img.src; // Store the original src
+          img.setAttribute("data-src", originalSrc); // Set data-src to the original src
+          img.src = "assets/images/loader-img.gif"; // Replace src with the loader image
+          img.setAttribute("data-lazy", "true"); // Mark the image as initialized for lazy loading
+        });
+        const observerOptions = {
+          rootMargin: "0px",
+          threshold: 0.1, // When 10% of the image is visible, load the image
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src; // Change the src back to the original image source
+              img.onload = () => img.classList.add("loaded"); // Optionally add a class when loaded
+              observer.unobserve(img); // Stop observing the image
+            }
+          });
+        }, observerOptions);
+        images.forEach((image) => observer.observe(image));
+      };
+      lazyLoadImages(); // Call the function to set up lazy loading
+    });
+  </script>
+</body>
+
+</html>
